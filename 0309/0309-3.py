@@ -2,7 +2,7 @@ import turtle
 import time
 import random
 
-def move_up():
+def move_up():  
     global direction
     if direction != 1:
         direction = 1
@@ -35,25 +35,24 @@ apple.shape('square')
 apple.penup()
 apple.color('green')
 
-x = 20*random.randint(-140, 140)
-y = 20*random.randint(-140, 140)
-
-
 wn.listen()
-
 wn.onkeypress(move_up, "Up")
 wn.onkeypress(move_down, "Down")
 wn.onkeypress(move_left, "Left")
 wn.onkeypress(move_right, "Right")
 
-direction = 0
-direction = 1
-direction = 2
-direction = 3
+score = 0
+
+direction = 0 #right
+
+
+apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 
 while True:
     wn.update()
-    time.sleep(0.05)
+    wn.tracer(0)
+    time.sleep(0.1)
+
     if direction == 0:  #right
         t.goto(t.xcor() + 20, t.ycor())
         if t.xcor() > 280:
@@ -70,3 +69,9 @@ while True:
         t.goto(t.xcor(), t.ycor() - 20)
         if t.ycor() < -280:
             t.goto(t.xcor(), 280)
+    
+    if t.xcor() == apple.xcor() and t.ycor() == apple.ycor():
+        score = score + 1
+        apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+
+    print(score)
