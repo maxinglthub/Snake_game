@@ -36,10 +36,10 @@ apple.penup()
 apple.color('green')
 
 wn.listen()
-wn.onkeypress(move_up, "Up")
-wn.onkeypress(move_down, "Down")
-wn.onkeypress(move_left, "Left")
-wn.onkeypress(move_right, "Right")
+wn.onkeypress(move_up, "w")
+wn.onkeypress(move_down, "s")
+wn.onkeypress(move_left, "a")
+wn.onkeypress(move_right, "d")
 
 score = 0
 
