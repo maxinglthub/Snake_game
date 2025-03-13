@@ -45,7 +45,6 @@ score = 0
 
 direction = 0 #right
 
-
 apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 
 while True:
