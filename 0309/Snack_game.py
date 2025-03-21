@@ -35,6 +35,17 @@ apple.shape('square')
 apple.penup()
 apple.color('green')
 
+snake = [t]
+count = 0
+while count < 3:
+    count = count + 1
+    p = turtle.Turtle()
+    p.shape('square')
+    p.penup()
+    p.color('red')
+    p.goto(-20*count, 0)
+    snake.append(p)
+
 wn.listen()
 wn.onkeypress(move_up, "w")
 wn.onkeypress(move_down, "s")
@@ -42,18 +53,45 @@ wn.onkeypress(move_left, "a")
 wn.onkeypress(move_right, "d")
 
 score = 0
-
+speed = 3
+level = 0
 direction = 0 #right
 
-x = 20*random.randint(-14, 14)
-y = 20*random.randint(-14, 14)
-apple.goto(x, y)
-#apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 
-while True:
+stop = False
+
+while not stop:
     wn.update()
     wn.tracer(0)
     time.sleep(0.1)
+    t.speed(speed)
+
+    if t.xcor() == apple.xcor() and t.ycor() == apple.ycor():
+        print("Last apple at: ", apple.xcor(), apple.ycor())
+        score = score + 1
+        if level == 10 or level == "Maxlevel":
+            level = "Maxlevel"
+        else: 
+            level = level + 1
+        apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+        
+        p = turtle.Turtle()
+        p.shape('square')
+        p.penup()
+        p.color('red')
+        snake.append(p)
+
+        print("Now apple at: ", apple.xcor(), apple.ycor())
+        print("Score: ", score)
+        print("Your level: ", level)
+        print("------------------")
+        speed = speed + 0.5
+
+    i = len(snake) - 1
+    while i > 0:
+        snake[i].goto(snake[i - 1].xcor(), snake[i - 1].ycor())
+        i = i - 1
 
     if direction == 0:  #right
         t.goto(t.xcor() + 20, t.ycor())
@@ -71,9 +109,18 @@ while True:
         t.goto(t.xcor(), t.ycor() - 20)
         if t.ycor() < -280:
             t.goto(t.xcor(), 280)
-    
-    if t.xcor() == apple.xcor() and t.ycor() == apple.ycor():
-        score = score + 1
-        apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+        
+    i = len(snake) - 1
+    while i > 0:
+        if t.xcor() == snake[i].xcor() and t.ycor() == snake[i].ycor():
+            stop = True
+        i = i - 1
 
-    print(score)
+print("------Game over------")
+print("Your score: ", score)
+print("Your level: ", level)
+print("GG")
+print("---------------------")
+
+    
+    
