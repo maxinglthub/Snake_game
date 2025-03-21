@@ -45,7 +45,10 @@ score = 0
 
 direction = 0 #right
 
-apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+x = 20*random.randint(-14, 14)
+y = 20*random.randint(-14, 14)
+apple.goto(x, y)
+#apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 
 while True:
     wn.update()
