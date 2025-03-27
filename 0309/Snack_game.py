@@ -61,8 +61,6 @@ apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 while apple.xcor() == p.xcor() and apple.ycor() == p.ycor():
     apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
 
-
-
 stop = False
 
 while not stop:
