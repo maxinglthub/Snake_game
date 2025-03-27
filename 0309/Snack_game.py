@@ -125,4 +125,3 @@ print("Your score: ", score)
 print("Your level: ", level)
 print("GG")
 print("---------------------")
-
