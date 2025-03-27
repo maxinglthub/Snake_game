@@ -47,10 +47,10 @@ while count < 3:
     snake.append(p)
 
 wn.listen()
-wn.onkeypress(move_up, "w")
-wn.onkeypress(move_down, "s")
-wn.onkeypress(move_left, "a")
-wn.onkeypress(move_right, "d")
+wn.onkeypress(move_up, "Up")
+wn.onkeypress(move_down, "Down")
+wn.onkeypress(move_left, "Left")
+wn.onkeypress(move_right, "Right")
 
 score = 0
 speed = 3
@@ -58,6 +58,10 @@ level = 0
 direction = 0 #right
 
 apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+while apple.xcor() == p.xcor() and apple.ycor() == p.ycor():
+    apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+
+
 
 stop = False
 
@@ -75,6 +79,8 @@ while not stop:
         else: 
             level = level + 1
         apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
+        while apple.xcor() == p.xcor() and apple.ycor() == p.ycor():
+            apple.goto(20*random.randint(-14, 14), 20*random.randint(-14, 14))
         
         p = turtle.Turtle()
         p.shape('square')
