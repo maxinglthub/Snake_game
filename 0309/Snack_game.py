@@ -1,3 +1,6 @@
+#Pls check link below if code have any proplems :)
+#https://github.com/maxinglthub/Snake_game.git
+
 import turtle
 import time
 import random
